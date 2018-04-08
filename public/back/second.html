@@ -59,17 +59,95 @@
     <!--路径导航-->
     <ol class="breadcrumb">
       <li><a href="index.html">管理系统</a></li>
-      <li class="active">首页</li>
+      <li class="active">分类管理</li>
+      <li class="active">二级分类</li>
     </ol>
 
     <div class="lt_content">
-      <div class="echarts_1 pull-left"></div>
-      <div class="echarts_2 pull-right"></div>
+      <button class="btn btn-default mb_20" id="addBtn">添加分类</button>
+
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th width="10%">序号</th>
+              <th width="30%">一级分类名称</th>
+              <th width="30%">二级分类名称</th>
+              <th width="30%">二级分类LOGO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--刨了一个坑-->
+          </tbody>
+        </table>
+
+      <!--分页-->
+      <div class="text-right">
+        <ul id="paginator"></ul>
+      </div>
+
     </div>
 
 
   </div>
 </div>
+
+<!--添加分类模态框-->
+<div class="modal fade" id="addModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加分类</h4>
+      </div>
+      <form id="form">
+      <div class="modal-body">
+
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">
+               <span id="dropdownText">请选择一级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!--刨个坑-->
+              </ul>
+            </div>
+
+            <input type="hidden" name="categoryId">
+            <!-- 火热的品牌 -->
+            <input type="hidden" name="hot" value="1">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入二级分类" name="brandName">
+          </div>
+
+          <div class="form-group">
+            <!-- 注意:
+                   1. 指定name用于让后台获取图片, 所以不能乱写
+                   2. 指定data-url, 指定接口地址
+           -->
+            <label class="btn btn-default" for="fileupload">上传图片</label>
+            <input type="file" name="pic1" data-url="/category/addSecondCategoryPic" id="fileupload" style="display: none;">
+          </div>
+
+          <div class="form-group" id="imgBox">
+            <img src="images/none.png" width="100">
+            <input type="hidden" name="brandLogo">
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary" form="form">添加</button>
+      </div>
+      </form>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
+
+
 
 <!-- 登录退出的模态框,  配置 data-dismiss="modal" 可以关闭模态框 -->
 <div class="modal fade" id="logoutModal">
@@ -91,6 +169,24 @@
   </div><!-- /.modal-dialog -->
 </div>
 
+<script type="text/html" id="secondTpl">
+  {{ each rows v i }}
+    <tr>
+      <td>{{ (page-1)*size + (i+1) }}</td>
+      <td>{{ v.categoryName }}</td>
+      <td>{{ v.brandName }}</td>
+      <td>
+        <img src="{{ v.brandLogo ? v.brandLogo : 'images/none.png' }}" height="50" alt="">
+      </td>
+    </tr>
+  {{ /each}}
+</script>
+
+<script type="text/html" id="dropdownTpl">
+  {{ each rows v i }}
+    <li><a href="#" data-id="{{ v.id }}">{{ v.categoryName }}</a></li>
+  {{ /each }}
+</script>
 
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
@@ -98,8 +194,12 @@
 <script src="lib/nprogress/nprogress.js"></script>
 <script src="lib/artTemplate/template-web.js"></script>
 <script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<!-- 引入 jquery-fileupload 包 -->
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
+
 <script src="js/common.js"></script>
-<script src="js/user.js"></script>
+<script src="js/second.js"></script>
 
 </body>
 </html>
