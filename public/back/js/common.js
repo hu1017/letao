@@ -1,5 +1,5 @@
  //配置禁用小圆环
- NProgress.configure({ showSpinner: false});
+ NProgress.configure({ showSpinner: false });
 
  // ajaxStart 所有的 ajax 开始调用
  $(document).ajaxStart(function(){
