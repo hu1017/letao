@@ -1,0 +1,45 @@
+.itembox {
+  padding: 10px;
+  border-top: 1px solid #CCC;
+}
+
+.lt_price .price {
+  color: #FF3737;
+}
+.lt_price .old {
+  text-decoration: line-through;
+  font-size: 12px;
+  color: #666;
+}
+
+
+.lt_size span {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 3px;
+  margin: 4px 0;
+  border: 1px solid #ccc;
+  background-color: #F5F5F5;
+  font-size: 14px;
+}
+
+.lt_num span {
+  font-size: 12px;
+  color: #666;
+}
+
+
+.lt_go_cart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 55px;
+  width: 100%;
+  background-color: #EFEFF4;
+  border-top: 1px solid #FF0000;
+  padding: 10px 10px 0 10px;
+}
+.lt_go_cart .go_cart {
+  padding: 5px;
+}
