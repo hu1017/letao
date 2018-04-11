@@ -30,7 +30,6 @@ $(function() {
   }
 
 
-
   // 功能2: 删除功能, 删除本地历史记录数组里面一项
   // 1. 给所有的删除按钮, 添加委托事件
   // 2. 获取索引
@@ -65,7 +64,6 @@ $(function() {
   // 2. 清掉本地存储中的search_list
   // 3. 页面重新渲染
   $('.lt_history').on("click", ".btn_empty", function() {
-
     // 参数1: 内容
     // 参数2: 标题
     // 参数3: 数组按钮
@@ -79,10 +77,7 @@ $(function() {
         // 重新渲染
         render();
       }
-    })
-
-
-
+    });
   });
 
 
@@ -132,6 +127,10 @@ $(function() {
     render();
     // 清空文本
     $('.lt_search input').val("");
+
+
+    // 跳转到搜索列表页, 将搜索关键字传递到searchList.html
+    location.href = "searchList.html?key=" + key;
 
   })
 
