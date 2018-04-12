@@ -150,3 +150,22 @@ img{
 .product_item .old{
   text-decoration: line-through;
 }
+.lt_product_item .mui-ellipsis-2 {
+  height: 40px;
+}
+
+/* 尺码相关的样式 */
+.size span {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 3px;
+  margin: 4px 0;
+  border: 1px solid #ccc;
+  background-color: #F5F5F5;
+  font-size: 14px;
+}
+.size span.current {
+  background-color: #069;
+  color: #fff;
+}
