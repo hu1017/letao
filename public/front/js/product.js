@@ -48,7 +48,7 @@ $('.add_cart').click(function(){
   }
 
   $.ajax({
-    url:' /cart/addCart',
+    url:'/cart/addCart',
     type:'post',
     data:{
       productId:productId,
@@ -59,7 +59,7 @@ $('.add_cart').click(function(){
       console.log(info);
       if(info.success){
         mui.confirm("添加成功","温馨提示",["去购物车","继续浏览"],function(e){
-          if(e.index==0){
+          if(e.index === 0){
             location.href = "cart.html";
           }
         })
